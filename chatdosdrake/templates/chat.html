@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/estilo-chat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+
+    <title>Global Chat</title>
+</head>
+<body>
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="/static/videos/background-chat.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+    </video>
+
+    <h2 class="title">Global Chat</h2>
+    <h3 class="title">Bem vindo, {{ usuario[2] }} </h3>
+
+    <div class="container-chat">
+        <div id="mensagens">
+            {% for msg in mensagens %}
+                {% if msg[1] == usuario_logado %} 
+                    <div class="mensagem eu">
+                        <span>{{ msg[2] }}</span>
+                        <span class="horario">{{ msg[3] }}</span>
+                    </div>
+                {% else %}
+                    <div class="mensagem outro">
+                        <span>{{ msg[2] }}</span>
+                        <span class="horario">{{ msg[3] }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <form onsubmit="event.preventDefault(); enviarMensagem();" class="form-chat">
+            <input type="text" id="mensagemInput" placeholder="Digite sua mensagem" autocomplete="off" class="input-chat" required>
+            <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+    </div>
+    <script>
+        var socket = io();  
+        
+        function enviarMensagem() {
+
+            var mensagem = document.getElementById("mensagemInput").value;  
+            if (mensagem.trim() !== "") {  
+                socket.emit('enviar_mensagem', { mensagem: mensagem });  
+                document.getElementById("mensagemInput").value = "";  
+            }
+        }
+        
+        socket.on('nova_mensagem', function(data) {  
+            var chatDiv = document.getElementById("mensagens");  
+            var novaMsg = document.createElement("span");  
+            novaMsg.className = "mensagem outro";  
+            novaMsg.innerHTML = `<strong>${data.mensagem.split(':')[0]}:</strong> ${data.mensagem.split(':')[1]} <br> <span style="font-size: 0.9em; opacity: 0.7;">${data.data_hora}</span>`;
+            novaMsg.style.display = "block"; 
+            chatDiv.appendChild(novaMsg);  
+        });
+        
+        function scrollParaBaixo() {  
+            var chat = document.getElementById("mensagens");  
+            chat.scrollTop = chat.scrollHeight;  
+        }
+        
+        window.onload = scrollParaBaixo;  
+        setInterval(scrollParaBaixo, 1000);  
+            </script>
+</body>
+</html>

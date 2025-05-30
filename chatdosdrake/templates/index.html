@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/styles/estilo.css">
+</head>
+
+
+<body>
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="/static/videos/background-chat.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+    </video>
+
+    <div class="container">
+        <form class="form-login" action="/login" method="POST">
+            <p class="title">Login</p>
+            <p class="message">Faça o Login para ter acesso ao GlobalChat</p>
+            <label>
+                <input class="input" type="text" name="usuario" required>
+                <span>Usuario:</span>
+            </label> 
+            <label>
+                <input class="input" type="password" name="senha" required>
+                <span>Senha:</span>
+            </label>
+        
+            <button class="submit" type="submit">Login</button>
+        </form>
+    </div>
+
+    <form class="form-login" action="/login" method="POST">
+    <p class="signin">Não Possui Cadastro? <a href="/cadastro">Registre-se</a></p>
+    </form>
+
+    <div class="img-logoglobal">
+    <img src="" alt="">    
+    </div>
+</body>
+</html>

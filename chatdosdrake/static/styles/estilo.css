@@ -1,0 +1,137 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.container, .container-chat {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 350px;
+    width: 100%;
+}
+
+.container {
+    height: 340px;
+}
+
+.container-chat {
+    height: 500px;
+}
+
+.form-login {
+    background: transparent;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.message {
+    color: #bdbdbd;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    padding: 8px;
+    font-size: 18px;
+    background: #262626;
+    color: #e0e0e0;
+    border-radius: 20px;
+    border: 1px solid #444;
+    text-align: center;
+    font-weight: initial;
+    text-transform: lowercase;
+    margin: 10px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #bb86fc;
+    box-shadow: 0 0 10px #bb86fc;
+}
+
+span {
+    color: #bdbdbd;
+    font-size: 14px;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    border-radius: 20px;
+}
+
+.submit {
+    background: #bb86fc;
+    color: #121212;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.submit:hover {
+    background: #9b59b6;
+}
+
+.signin {
+    color: #e0e0e0;
+    margin-top: 15px;
+}
+
+.signin a {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin a:hover {
+    text-decoration: underline;
+}
